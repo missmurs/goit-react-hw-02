@@ -7,14 +7,14 @@ import Options from "./componets/Options/Options";
 import Notification from "./componets/Notification/Notification";
 function App() {
   const [feedback, setFeedback] = useState(() => {
-    return JSON.parse(localStorage.getItem("saved-feedback") ?? 0);
+    return JSON.parse(localStorage.getItem("saved-feedback") ?? setFeedback);
   });
   const updateFeedback = (feedbackType) => {
     setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
   };
 
   useEffect(() => {
-    localStorage.setItem("saved-feedback", JSON.stringify(feedback));
+    localStorage.setItem("saved-feedback", JSON.stringify(setFeedback));
   }, [feedback]);
   console.log(feedback);
 
