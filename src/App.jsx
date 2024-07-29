@@ -14,10 +14,9 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem("saved-feedback", JSON.stringify(setFeedback));
+    localStorage.setItem("saved-feedback", JSON.stringify(feedback));
   }, [feedback]);
   console.log(feedback);
-
   const upcloseFeedback = () => {
     setFeedback({
       good: 0,
