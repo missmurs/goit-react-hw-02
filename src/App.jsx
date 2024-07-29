@@ -7,7 +7,13 @@ import Options from "./componets/Options/Options";
 import Notification from "./componets/Notification/Notification";
 function App() {
   const [feedback, setFeedback] = useState(() => {
-    return JSON.parse(localStorage.getItem("saved-feedback") ?? setFeedback);
+    return JSON.parse(
+      localStorage.getItem("saved-feedback") ?? {
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      }
+    );
   });
   const updateFeedback = (feedbackType) => {
     setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
