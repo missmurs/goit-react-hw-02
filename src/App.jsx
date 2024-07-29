@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-import Description from "./componets/Description/Description";
-import Feedback from "./componets/Feedback/Feedback";
-import Options from "./componets/Options/Options";
-import Notification from "./componets/Notification/Notification";
+import Description from "./components/Description/Description";
+import Feedback from "./components/Feedback/Feedback";
+import Options from "./components/Options/Options";
+import Notification from "./components/Notification/Notification";
 function App() {
   const [feedback, setFeedback] = useState(() => {
     return JSON.parse(localStorage.getItem("saved-feedback"));
