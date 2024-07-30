@@ -6,8 +6,14 @@ import Feedback from "./components/Feedback/Feedback";
 import Options from "./components/Options/Options";
 import Notification from "./components/Notification/Notification";
 function App() {
+  const initialFeedback = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
   const [feedback, setFeedback] = useState(() => {
-    return JSON.parse(localStorage.getItem("saved-feedback"));
+    const savedFeedback = localStorage.getItem("saved-feedback");
+    return savedFeedback ? JSON.parse(savedFeedback) : initialFeedback;
   });
   const updateFeedback = (feedbackType) => {
     setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
@@ -26,9 +32,7 @@ function App() {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedback = Math.round(
-    (feedback.good / (totalFeedback - feedback.neutral)) * 100
-  );
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
 
   return (
     <>
